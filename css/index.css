@@ -140,6 +140,7 @@ body {
   color: #737373;
 }
 
+/* Added overflow: scroll -- to Fix Style issue when inserts a lot of items */
 .todo-list {
   margin: 0;
   padding: 0;
