@@ -1,12 +1,15 @@
 import { delegateEvent, listen, query } from './helpers.js';
 
-const _itemId = element => parseInt(element.parentNode.dataset.id || element.parentNode.parentNode.dataset.id, 10);
+const _itemId = (element) =>
+  parseInt(
+    element.parentNode.dataset.id || element.parentNode.parentNode.dataset.id,
+    10
+  );
 
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
 
 export default class View {
-
   constructor(template) {
     this.template = template;
     this.$todoList = query('.todo-list');
@@ -125,24 +128,39 @@ export default class View {
   }
 
   bindEditItemSave(handler) {
-    delegateEvent(this.$todoList, 'li .edit', 'blur', ({ target }) => {
-      if (!target.dataset.iscanceled) {
-        handler(_itemId(target), target.value.trim());
-      }
-    }, true);
+    delegateEvent(
+      this.$todoList,
+      'li .edit',
+      'blur',
+      ({ target }) => {
+        if (!target.dataset.iscanceled) {
+          handler(_itemId(target), target.value.trim());
+        }
+      },
+      true
+    );
 
-    delegateEvent(this.$todoList, 'li .edit', 'keypress', ({ target, keyCode }) => {
-    });
+    delegateEvent(
+      this.$todoList,
+      'li .edit',
+      'keypress',
+      ({ target, keyCode }) => {}
+    );
   }
 
   bindEditItemCancel(handler) {
-    delegateEvent(this.$todoList, 'li .edit', 'keyup', ({ target, keyCode }) => {
-      if (keyCode === ESCAPE_KEY) {
-        target.dataset.iscanceled = true;
-        target.blur();
+    delegateEvent(
+      this.$todoList,
+      'li .edit',
+      'keyup',
+      ({ target, keyCode }) => {
+        if (keyCode === ESCAPE_KEY) {
+          target.dataset.iscanceled = true;
+          target.blur();
 
-        handler(_itemId(target));
+          handler(_itemId(target));
+        }
       }
-    });
+    );
   }
 }
