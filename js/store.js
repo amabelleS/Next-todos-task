@@ -1,10 +1,12 @@
 import { emptyItemQuery } from './item.js';
+// import { getTodes } from './helpers';
 
 export default class Store {
   constructor(name, callback) {
     const localStorage = window.localStorage;
 
     let liveTodos;
+    // let liveTodos = getTodes();
 
     this.getLocalStorage = () => {
       return liveTodos || JSON.parse(localStorage.getItem(name) || '[]');
