@@ -57,9 +57,15 @@ export default class Store {
 
   insert(item, callback) {
     const todos = this.getLocalStorage();
-    todos.push(item);
-
-    this.setLocalStorage(todos);
+    // return if item in todos / alert => Task 2
+    const { title } = item;
+    const isDuplicate = todos.map((todo) => todo.title).includes(title);
+    if (isDuplicate) {
+      alert('Item alreadt exist');
+    } else {
+      todos.push(item);
+      this.setLocalStorage(todos);
+    }
 
     if (callback) {
       callback();
