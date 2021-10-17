@@ -140,13 +140,13 @@ body {
   color: #737373;
 }
 
-/* Added overflow: scroll -- to Fix Style issue when inserts a lot of items */
+/* Added overflow-y: scroll -- to Fix Style issue when inserts a lot of items */
 .todo-list {
   margin: 0;
   padding: 0;
   list-style: none;
   max-height: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .todo-list li {

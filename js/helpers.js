@@ -1,4 +1,4 @@
-export function query(selector, scope) {
+export function query(selector, scope = document) {
   if (scope === null) throw 'query scope cannot be null';
   return (scope || document).querySelector(selector);
 }
@@ -31,6 +31,7 @@ export const escapeForHTML = (s) =>
 // Load and display tasks from https://jsonplaceholder.typicode.com/todos when application loads - NOT COMPLITED...
 export async function getTodes() {
   const res = await fetch(`https://jsonplaceholder.typicode.com/todos`);
+  console.log('🚀 ~ file: helpers.js ~ line 34 ~ getTodes ~ res', res);
   const data = await res.json();
 
   console.log(data);

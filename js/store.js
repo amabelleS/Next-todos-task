@@ -1,5 +1,14 @@
 import { emptyItemQuery } from './item.js';
-// import { getTodes } from './helpers';
+// import getTodes from './helpers';
+
+async function getTodes() {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos`);
+  console.log('🚀 ~ file: helpers.js ~ line 34 ~ getTodes ~ res', res);
+  const data = await res.json();
+
+  console.log(data);
+  return data;
+}
 
 export default class Store {
   constructor(name, callback) {
