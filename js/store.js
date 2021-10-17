@@ -76,10 +76,10 @@ export default class Store {
     const todos = this.getLocalStorage().filter((todo) => {
       for (let k in query) {
         if (query[k] === todo[k]) {
-          return true;
+          return false;
         }
       }
-      return false;
+      return true;
     });
 
     this.setLocalStorage(todos);
